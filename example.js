@@ -2,9 +2,10 @@
 
 const exampleController = require('./src/controllers/example')
 
-console.log(exampleController('index').index())
-console.log(exampleController('update').update())
-console.log(exampleController('create').create())
-console.log(exampleController('destroy').destroy())
-
-
+Promise.all([
+    exampleController('index').index(),
+    exampleController('update').update(),
+    exampleController('create').create(),
+    exampleController('destroy').destroy()
+])
+.then(result => { console.log(result)})
